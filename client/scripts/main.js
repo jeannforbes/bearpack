@@ -11,16 +11,21 @@ class App {
     };
 
     this.color = {
-      background: '#334'
+      accent: '#ff5733',
+      brite: '#ffffff',
+      lite: '#f0f0f0',
+      med: '#b8b8b8',
+      dark: '#707070'
     };
   }
 
   start () {
 
     // Initialize the game
+    this.joinGame();
 
     // Initialize the canvas
-    this.canvas = document.querySelector('#canvas');
+    this.canvas = document.querySelector('#game-canvas');
     this.ctx = this.canvas.getContext('2d');
 
     //this.animator = new Animator();
@@ -28,11 +33,7 @@ class App {
     window.onresize = this.resizeCanvas.bind(this);
     this.resizeCanvas();
 
-    // Connect via socket.io
-    this.socket = io.connect();
-    this.socket.on('connected', data => {
-      console.log(data);
-    });
+    this.joinGame();
 
     // Setup handlers
     window.onmousedown = e => {this.handleUserInput(e, 'mousedown')}
@@ -43,6 +44,19 @@ class App {
     console.log('app initialized');
 
     window.requestAnimationFrame(this.update.bind(this));
+  }
+
+  joinGame () {
+    // Connect via socket.io
+    this.socket = io.connect();
+    this.socket.on('connected', data => {
+      console.log(data);
+    });
+
+  }
+
+  leaveGame () {
+    this.socket.emit('disconnect');
   }
 
   handleUserInput (e, msg) {
@@ -56,13 +70,23 @@ class App {
   }
 
   resizeCanvas () {
-    this.canvas.width = window.innerWidth-4;
-    this.canvas.height = window.innerHeight-4;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
   }
 
   draw (ctx){
-    ctx.fillStyle = this.color.background;
+    this.clearCanvas(ctx);
+
+  }
+
+  clearCanvas (ctx) {
+    ctx.fillStyle = this.color.med;
     ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
+  }
+
+  drawPlayer (ctx, player) {
+    ctx.fillStyle = player.color;
+    ctx.fillRect(player.loc.x, player.loc.y, player.width, player.height);
   }
 };
 

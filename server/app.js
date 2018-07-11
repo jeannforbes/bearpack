@@ -1,5 +1,4 @@
 // Serves up the app
-
 const express = require('express'),
       http = require('http'),
       path = require('path');
@@ -18,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/style.css', (req, res) => {
-	res.sendFile('style.css', {root: './client/'});
+	res.sendFile('style.css', {root: './client/css/'});
 });
 
 // SCRIPTS
@@ -30,7 +29,7 @@ app.get('/animations.js', (req, res) => {
 });
 
 // Start the game
-let game = new Game(server, io);
+let game = new Game(io);
 game.start();
 
 server.listen(PORT, () => console.log(`App is listening on port ${PORT}...`));

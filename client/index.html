@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <title>bearpack</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+
   </head>
   <body>
-  <canvas id='canvas'></canvas>
+    <header>
+      <h1>bear<span class='accent'>pack</span></h1>
+      <div class='navbar'>
+          <ul>
+            <li><a href="#play" class='active'>play</a></li>
+            <li><a href="#draw">draw</a></li>
+            <li><a href="#watch">watch</a></li>
+          </ul>
+        </div>
+    </header>
+    <canvas id='game-canvas'></canvas>
   </body>
 
   <script src="/socket.io/socket.io.js"></script>
-  
+
   <script src="animations.js"></script>
   <script src="main.js"></script>
 
