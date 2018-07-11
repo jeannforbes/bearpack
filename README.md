@@ -1,2 +1,3 @@
 # bearpack
-Everything for the BearPack
+
+Experimental content for the bearpack.

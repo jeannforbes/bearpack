@@ -1,0 +1,27 @@
+{
+  "name": "bearpack",
+  "version": "1.0.0",
+  "description": "Everything for the BearPack",
+  "main": "./server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeannforbes/bearpack.git"
+  },
+  "author": "jeannforbes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeannforbes/bearpack/issues"
+  },
+  "homepage": "https://github.com/jeannforbes/bearpack#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.0"
+  }
+}
